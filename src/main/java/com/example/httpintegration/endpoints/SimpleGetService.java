@@ -14,6 +14,6 @@ public class SimpleGetService {
     @ServiceActivator(inputChannel = "getInput", outputChannel = "getReply")
     public List<String> process(LinkedMultiValueMap payload) {
         log.info(String.format("a1: %s a2: %s", payload.get("a1").get(0).toString(), payload.get("a2").get(0).toString()));
-        return new ArrayList<>();
+        return List.of("1", "2", "3");
     }
 }

@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "2a364650-2a2d-41ae-aef2-501595de5d91",
+		"name": "Spring Integration Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /abs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"test\",\n    \"completed\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/abs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"abs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /abs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/abs?a1=100&a2=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"abs"
+					],
+					"query": [
+						{
+							"key": "a1",
+							"value": "100"
+						},
+						{
+							"key": "a2",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

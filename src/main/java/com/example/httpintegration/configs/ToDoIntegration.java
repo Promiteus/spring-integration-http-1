@@ -1,6 +1,5 @@
 package com.example.httpintegration.configs;
 
-import com.example.httpintegration.dto.ReqParams;
 import com.example.httpintegration.models.ToDo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +11,8 @@ import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.http.inbound.HttpRequestHandlingMessagingGateway;
 import org.springframework.integration.http.inbound.RequestMapping;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.util.List;
 
 @EnableIntegration
 @Configuration
@@ -66,6 +64,10 @@ public class ToDoIntegration {
         gateway.setRequestMapping(post200Mapping());
         gateway.setRequestPayloadType(ResolvableType.forClass(ToDo.class));
         gateway.setRequestChannelName("postInput");
+        org.springframework.integration.http.inbound.CrossOrigin crossOrigin = new org.springframework.integration.http.inbound.CrossOrigin();
+        crossOrigin.setOrigin("*");
+        crossOrigin.setAllowedHeaders("*");
+        gateway.setCrossOrigin(crossOrigin);
         /*reply - канал, куда нужно положить обработанный ответ. Ответ возвращает класс SimpleServiceActivator в outputChannel = "reply"*/
         gateway.setReplyChannel(postReply());
         return gateway;
@@ -87,6 +89,10 @@ public class ToDoIntegration {
                 new HttpRequestHandlingMessagingGateway(true); //expectReply = false вернет ответ с кодом 200 мгновенно без ожидания выполнения процесса
         gateway.setRequestMapping(getMapping());
         gateway.setRequestChannelName("getInput");
+        org.springframework.integration.http.inbound.CrossOrigin crossOrigin = new org.springframework.integration.http.inbound.CrossOrigin();
+        crossOrigin.setOrigin("*");
+        crossOrigin.setAllowedHeaders("*");
+        gateway.setCrossOrigin(crossOrigin);
         /*reply - канал, куда нужно положить обработанный ответ. Ответ возвращает класс SimpleServiceActivator в outputChannel = "reply"*/
         gateway.setReplyChannel(getReply());
         return gateway;
