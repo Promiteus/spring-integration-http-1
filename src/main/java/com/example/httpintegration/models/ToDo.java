@@ -1,8 +1,6 @@
 package com.example.httpintegration.models;
 
-import com.example.httpintegration.configs.ToDoIntegration;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
